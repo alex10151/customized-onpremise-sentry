@@ -182,11 +182,12 @@ SENTRY_DIGESTS = "sentry.digests.backends.redis.RedisBackend"
 # Web Server #
 ##############
 
-SENTRY_WEB_HOST = "0.0.0.0"
-SENTRY_WEB_PORT = 9000
+SENTRY_WEB_HOST = '0.0.0.0'
+SENTRY_WEB_PORT = '9000,sentry.crt,sentry.key'
 SENTRY_WEB_OPTIONS = {
     "http": "%s:%s" % (SENTRY_WEB_HOST, SENTRY_WEB_PORT),
-    "protocol": "uwsgi",
+    # "protocol": "uwsgi",
+        'protocol': 'https',
     # This is needed in order to prevent https://git.io/fj7Lw
     "uwsgi-socket": None,
     "so-keepalive": True,
@@ -221,10 +222,10 @@ SENTRY_WEB_OPTIONS = {
 # If you're using a reverse SSL proxy, you should enable the X-Forwarded-Proto
 # header and enable the settings below
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # End of SSL/TLS settings
 
